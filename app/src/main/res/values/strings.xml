@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Videolang</string>
+    <string name="wilkomen">Wilkomen</string>
+    <string name="todo">TODO</string>
+    <string name="bienvenu">Bienvenu</string>
+    <string name="get_started">Get Started</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="hallo">Hallo!</string>
+    <string name="Videolang">TODO</string>
+    <string name="hello1">Hello</string>
+    <string name="beinvenido">Beinvenido</string>
+    <string name="caio">Caio</string>
+    <string name="enter_name_text">Enter your Name</string>
+    <string name="register_here_text">Register here!</string>
+    <string name="emailTextView">Email</string>
+    <string name="passwordTextView">Password</string>
+    <string name="Last_Name_text">Name</string>
+    <!--    <string name="last_name">Last Name</string>-->
+    <!--    <string name="first_name">First Name</string>-->
+    <string name="register_button">Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="login">Login</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="confirmPassword">Confirm Password</string>
+</resources>
