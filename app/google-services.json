@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "349461414582",
+    "project_id": "videolang-sit708",
+    "storage_bucket": "videolang-sit708.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349461414582:android:533e14f39405a284725c17",
+        "android_client_info": {
+          "package_name": "com.example.videolang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349461414582-fmti7sr0hpskmigqefbiamrt5jkkuu33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgKSvmgvw5avQFGLFKBKfTBA2m_hw40dU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349461414582-fmti7sr0hpskmigqefbiamrt5jkkuu33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

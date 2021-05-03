@@ -35,6 +35,27 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.12" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldEmail"
+        android:layout_width="245dp"
+        android:layout_height="73dp"
+        android:background="@android:color/transparent"
+        android:hint="@string/email_new"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_edittext_register"
+            android:layout_width="235dp"
+            android:layout_height="52dp"
+            android:background="@android:color/transparent"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -54,14 +75,14 @@
         android:layout_height="71dp"
         android:background="@android:color/transparent"
         android:hint="@string/firstName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textFieldLastName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368">
+        app:layout_constraintTop_toBottomOf="@+id/textFieldEmail">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/firstname_edittext_register"
             android:layout_width="236dp"
             android:layout_height="59dp"
             android:background="@android:color/transparent"
@@ -87,14 +108,15 @@
         android:layout_height="66dp"
         android:background="@android:color/transparent"
         android:hint="@string/lastName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textFieldPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintHorizontal_bias="0.902"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.512">
+        app:layout_constraintVertical_bias="0.944">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lastname_edittext_register"
             android:layout_width="237dp"
             android:layout_height="52dp"
             android:background="@android:color/transparent"
@@ -118,17 +140,17 @@
         android:id="@+id/textFieldPassword"
         android:layout_width="242dp"
         android:layout_height="68dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/transparent"
         android:hint="@string/password"
         app:endIconMode="password_toggle"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textFieldConfirmPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.656">
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_edittext_register"
             android:layout_width="232dp"
             android:layout_height="54dp"
             android:background="@android:color/transparent"
@@ -150,20 +172,21 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textFieldConfirmPassword"
-        android:layout_width="242dp"
-        android:layout_height="64dp"
+        android:layout_width="256dp"
+        android:layout_height="63dp"
         android:background="@android:color/transparent"
-        android:hint="@string/password"
+        android:hint="@string/confirm_password"
         app:endIconMode="password_toggle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795">
+        app:layout_constraintVertical_bias="0.794">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+            android:id="@+id/confirmpass_edittext_register"
+            android:layout_width="234dp"
             android:layout_height="51dp"
             android:background="@android:color/transparent"
             android:inputType="textPassword"
@@ -180,25 +203,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textFieldConfirmPassword" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textFieldEmail"
-        android:layout_width="237dp"
-        android:layout_height="70dp"
-        android:background="@android:color/transparent"
-        android:hint="@string/email"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.865"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="224dp"
-            android:layout_height="60dp"
-            android:background="@android:color/transparent"
-            android:textSize="14sp" />
-    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

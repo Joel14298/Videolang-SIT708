@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,8 +16,10 @@ class MainActivity : AppCompatActivity() {
         getStart.setOnClickListener {
             Log.d("MainActivity","Try to go to register")
 
-            val intent = Intent(this,RegistrationPage::class.java)
+            val intent = Intent(this, Homepage::class.java)
             startActivity(intent)
         }
     }
+
+
 }
