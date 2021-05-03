@@ -12,8 +12,6 @@ class Homepage : AppCompatActivity() {
 
         bottomNavigationView()
 
-
-
     }
 
     private fun bottomNavigationView(){
