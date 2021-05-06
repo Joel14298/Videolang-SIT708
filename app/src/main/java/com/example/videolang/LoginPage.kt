@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
@@ -16,6 +17,13 @@ class LoginPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
 
+        val registerButtonTextview = findViewById<TextView>(R.id.register_button_textview)
+
+        registerButtonTextview.setOnClickListener {
+            val intent = Intent(this, RegistrationPage::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
 
     val login = findViewById<Button>(R.id.signInButton)
         login.setOnClickListener {
@@ -35,7 +43,7 @@ class LoginPage : AppCompatActivity() {
                                 return@addOnCompleteListener
                             } else {
                                 Log.d("LoginPage", "Logged in with user: $email")
-                                val intent = Intent(this, Homepage::class.java)
+                                val intent = Intent(this, HomepageActivity::class.java)
                                 startActivity(intent)
                             }
                         }

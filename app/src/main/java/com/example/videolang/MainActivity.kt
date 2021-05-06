@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
         getStart.setOnClickListener {
             Log.d("MainActivity","Try to go to register")
 
-            val intent = Intent(this, Homepage::class.java)
+            val intent = Intent(this, HomepageActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
     }

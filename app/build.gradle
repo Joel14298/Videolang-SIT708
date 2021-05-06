@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -59,5 +60,17 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
+    //Groupie
+    implementation "com.xwray:groupie:2.9.0"
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //Bottom navigation
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
 
 }

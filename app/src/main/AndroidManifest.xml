@@ -3,6 +3,7 @@
     package="com.example.videolang">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,14 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Videolang"
         android:usesCleartextTraffic="true">
-
-        <!-- <meta-data -->
+        <activity android:name=".Chats">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomepageActivity"/>
+        </activity>
+        <activity android:name=".HomepageActivity" /> <!-- <activity android:name=".ProfilePicActivity"></activity> -->
+        <activity android:name=".NewMessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomepageActivity" />
+        </activity> <!-- <meta-data -->
         <!-- android:name="com.google.android.actions" -->
         <!-- android:resource="@xml/network_security_config" /> -->
         <activity android:name=".AllChats" />
         <activity android:name=".LoginPage" />
         <activity android:name=".RegistrationPage" />
-        <activity android:name=".Homepage" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

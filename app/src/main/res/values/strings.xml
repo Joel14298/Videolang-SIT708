@@ -15,12 +15,10 @@
     <string name="emailTextView">Email</string>
     <string name="passwordTextView">Password</string>
     <string name="Last_Name_text">Name</string>
-    <!--    <string name="last_name">Last Name</string>-->
-    <!--    <string name="first_name">First Name</string>-->
     <string name="register_button">Register</string>
     <string name="sign_in">Sign In</string>
     <string name="email">email</string>
-    <string name="password">password</string>
+    <string name="password">Password</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="login">Login</string>
@@ -29,8 +27,9 @@
     <string name="confirmPassword">Confirm Password</string>
     <string name="textview">TextView</string>
     <string name="email_new">Email</string>
-    <string name="confirm_password">Confirm password</string>
-    <string name="title_activity_hompage_app">HompageApp</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="title_activity_homepage_app">HomepageApp</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -47,4 +46,11 @@
     <string name="notifications">Notifications</string>
     <string name="new_message">new_message</string>
     <string name="group">Group</string>
+    <string name="user_sign_out">Sign Out</string>
+    <string name="login_here">Login Here!</string>
+    <string name="already_registered">Already Registered ?</string>
+    <string name="register_here_txt">Register Here!</string>
+    <string name="not_registered_txt">Not Registered?</string>
+    <string name="select_photo_text">Select Photo</string>
+    <string name="create_message">New Message</string>
 </resources>
