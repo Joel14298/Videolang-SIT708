@@ -29,6 +29,7 @@ class HomepageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
 
+//        val bottomBar = findViewById<SmoothBottomBar>(R.id.bottomBar)
 
         val incommingMessages = findViewById<RecyclerView>(R.id.recycler_view_incommingmessage)
         incommingMessages.adapter = adapter
@@ -115,9 +116,7 @@ class HomepageActivity : AppCompatActivity() {
 
             }
             override fun onCancelled(error: DatabaseError) {
-
             }
-
         })
     }
     val adapter = GroupAdapter<GroupieViewHolder>()
