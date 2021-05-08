@@ -5,35 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="120dp">
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/sender_profile_picture"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="24dp"
+        app:civ_border_width="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/incoming_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
         android:text="Username"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/incoming_mesaage_textview"
+        app:layout_constraintStart_toEndOf="@+id/sender_profile_picture"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/incoming_mesaage_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="36dp"
         android:text="Latest Message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sender_profile_picture"
+        app:layout_constraintTop_toBottomOf="@+id/incoming_username"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

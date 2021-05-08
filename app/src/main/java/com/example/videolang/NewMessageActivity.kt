@@ -51,7 +51,6 @@ import de.hdodenhof.circleimageview.CircleImageView
                     val userItem = item as UserItem
 
                     val intent = Intent(view.context,Chats::class.java)
-//                    intent.putExtra(USER_KEY, userItem.user.firstName+ " " + userItem.user.lastName)
                     intent.putExtra(USER_KEY,userItem.user)
                     startActivity(intent)
                     finish()

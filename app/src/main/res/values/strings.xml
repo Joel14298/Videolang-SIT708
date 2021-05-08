@@ -53,4 +53,7 @@
     <string name="not_registered_txt">Not Registered?</string>
     <string name="select_photo_text">Select Photo</string>
     <string name="create_message">New Message</string>
+    <string name="enter_message">Enter Message</string>
+    <string name="send">Send</string>
+    <string name="groups">Groups</string>
 </resources>

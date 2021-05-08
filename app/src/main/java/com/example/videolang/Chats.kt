@@ -25,7 +25,6 @@ class Chats : AppCompatActivity() {
     companion object{
         val TAG = "Chatlog"
     }
-
     val adapter = GroupAdapter<GroupieViewHolder>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,24 +33,17 @@ class Chats : AppCompatActivity() {
 
         val recycle = findViewById<RecyclerView>(R.id.chat_recyclerview)
         recycle.adapter =adapter
-//        supportActionBar?.title = "Chat Log"
-
-//        val username = intent.getStringExtra(NewMessageActivity.USER_KEY)
         toUser = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
+
         if (toUser != null) {
             supportActionBar?.title = toUser!!.firstName + " " + toUser!!.lastName
         }
-
-//        setupDummyData()
-
         listenForMessages()
-
         val send = findViewById<Button>(R.id.chat_send_button)
         send.setOnClickListener {
             Log.d(TAG,"Attempt to send message")
             performSendMessage()
         }
-
     }
     private fun  listenForMessages(){
         val fromId = FirebaseAuth.getInstance().uid
@@ -76,33 +68,24 @@ class Chats : AppCompatActivity() {
                         }
                     }
                 }
+                val endChat = findViewById<RecyclerView>(R.id.chat_recyclerview).smoothScrollToPosition(adapter.itemCount -1)
             }
-
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-
             }
-
             override fun onChildRemoved(snapshot: DataSnapshot) {
 
             }
-
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-
             }
-
             override fun onCancelled(error: DatabaseError) {
-
             }
-
         })
     }
 
     class ChatMessage(val id: String,val text: String, val fromId: String, val toId: String, val timestamp: Long){
         constructor(): this("","","","",-1)
     }
-
     private fun performSendMessage(){
-
         val chatEditText = findViewById<EditText>(R.id.chat_edittext).text.toString()
 
         val fromId = FirebaseAuth.getInstance().uid
@@ -111,9 +94,8 @@ class Chats : AppCompatActivity() {
 
         if(fromId == null)return
         if(toId == null)return
-//    val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
-        val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
 
+        val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
         val toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
 
         val chatMessage = ChatMessage(reference.key!!, chatEditText, fromId, toId, System.currentTimeMillis() / 1000)
@@ -125,23 +107,14 @@ class Chats : AppCompatActivity() {
                 val recycle = findViewById<RecyclerView>(R.id.chat_recyclerview).scrollToPosition(adapter.itemCount -1)
             }
         toReference.setValue(chatMessage)
+
+      val messagesRef = FirebaseDatabase.getInstance().getReference("/incomingMessages/$fromId/$toId")
+        messagesRef.setValue(chatMessage)
+
+        val messagesToRef = FirebaseDatabase.getInstance().getReference("/incomingMessages/$toId/$fromId")
+        messagesToRef.setValue(chatMessage)
     }
-
-
-
-//    private fun setupDummyData(){
-//        val chatLog = findViewById<RecyclerView>(R.id.chat_recyclerview)
-//        val adapter = GroupAdapter<GroupieViewHolder>()
-//        chatLog.adapter = adapter
-//
-//        adapter.add(ChatItem("From message"))
-//        adapter.add(ChatItem2("To message"))
-//
-//    }
 }
-
-
-
 class ChatItem(val text:String, val user: User): Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int){
         viewHolder.itemView.findViewById<TextView>(R.id.textview_from_row).text = text
@@ -151,7 +124,6 @@ class ChatItem(val text:String, val user: User): Item<GroupieViewHolder>(){
         Picasso.get().load(uri).into(targetUri)
 
     }
-
     override fun getLayout(): Int {
     return R.layout.chat_dummy2
     }

@@ -21,8 +21,6 @@ import kotlinx.parcelize.Parcelize
 import java.util.*
 
 class RegistrationPage : AppCompatActivity() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration_page)
@@ -30,7 +28,6 @@ class RegistrationPage : AppCompatActivity() {
         val selectPhoto = findViewById<Button>(R.id.select_profile_picture)
 
         selectPhoto.setOnClickListener {
-
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
            startActivityForResult(intent,0)
@@ -39,7 +36,7 @@ class RegistrationPage : AppCompatActivity() {
         val loginRegister = findViewById<TextView>(R.id.login_button_textview)
 
         loginRegister.setOnClickListener{
-            val intent = Intent(this, LoginPage::class.java)
+            val intent = Intent(this, HomepageActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
@@ -52,7 +49,6 @@ class RegistrationPage : AppCompatActivity() {
     var selectedPhotoUri: Uri? = null
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode ==0 && resultCode == Activity.RESULT_OK && data != null) {
             selectedPhotoUri = data.data
             val selectPhoto = findViewById<Button>(R.id.select_profile_picture)
@@ -60,9 +56,6 @@ class RegistrationPage : AppCompatActivity() {
 
             val selectPhotoImageView = findViewById<CircleImageView>(R.id.circle_imageview_register)
             selectPhotoImageView.setImageBitmap(bitmap)
-
-//            val bitmapDrawable = BitmapDrawable(bitmap)
-//            selectPhoto.setBackgroundDrawable(bitmapDrawable)
         }
     }
     private fun registerMethod(){
@@ -138,7 +131,6 @@ class RegistrationPage : AppCompatActivity() {
             .addOnSuccessListener {
                 Log.d("RegistrationPage","Added to the DB")
                 val intent = Intent(this, LoginPage::class.java)
-//                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 Log.d("RegistrationPage","Opening all chats page after registering user")
             }
