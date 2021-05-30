@@ -3,7 +3,7 @@
     package="com.example.videolang">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:allowBackup="true"
@@ -11,35 +11,46 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Videolang"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".Chats">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomepageActivity"/>
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.Videolang">
+        <activity android:name=".activites.VideocallActivity"/>
+        <activity android:name=".activites.Views.Profile">
         </activity>
-        <activity android:name=".HomepageActivity" /> <!-- <activity android:name=".ProfilePicActivity"></activity> -->
-        <activity android:name=".NewMessageActivity">
+        <activity android:name=".activites.Views.Calendar">
+        </activity>
+        <activity android:name=".activites.Views.Calls">
+        </activity>
+        <activity android:name=".activites.Views.Notification">
+        </activity>
+        <activity android:name=".activites.Messaging.Chats">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomepageActivity" />
-        </activity> <!-- <meta-data -->
-        <!-- android:name="com.google.android.actions" -->
-        <!-- android:resource="@xml/network_security_config" /> -->
-        <activity android:name=".AllChats" />
-        <activity android:name=".LoginPage" />
-        <activity android:name=".RegistrationPage" />
-        <activity android:name=".MainActivity">
+                android:value=".activites.Views.HomepageActivity" />
+        </activity>
+        <activity android:name=".activites.Views.HomepageActivity" />
+        <activity android:name=".activites.NewMessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activites.Views.HomepageActivity" />
+        </activity>
+        <activity android:name=".activites.Userdata.LoginPage" />
+        <activity android:name=".activites.RegistrationPage" />
+        <activity android:name=".activites.Userdata.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <service android:name=".firebase.MessagingService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-    </application>
 
+        <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="@string/default_notification_channel_id" />
+    </application>
 </manifest>

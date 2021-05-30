@@ -1,4 +1,4 @@
-package com.example.videolang
+package com.example.videolang.activites
 
 import android.app.Activity
 import android.content.Intent
@@ -11,6 +11,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.videolang.R
+import com.example.videolang.activites.Userdata.LoginPage
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
@@ -21,6 +23,8 @@ import kotlinx.parcelize.Parcelize
 import java.util.*
 
 class RegistrationPage : AppCompatActivity() {
+//    val preferenceManager = PreferenceManager(applicationContext)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration_page)
@@ -36,7 +40,7 @@ class RegistrationPage : AppCompatActivity() {
         val loginRegister = findViewById<TextView>(R.id.login_button_textview)
 
         loginRegister.setOnClickListener{
-            val intent = Intent(this, HomepageActivity::class.java)
+            val intent = Intent(this, LoginPage::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         }
@@ -96,8 +100,23 @@ class RegistrationPage : AppCompatActivity() {
 
             }
         }
-    }
+//        val database = FirebaseFirestore.getInstance();
+//        val videoUser = HashMap<String, Any>()
+//        videoUser.put(Constants.KEY_FIRST_NAME, firstName)
+//        videoUser.put(Constants.KEY_LAST_NAME, lastName)
+//        videoUser.put(Constants.KEY_EMAIL,email)
+//        videoUser.put(Constants.KEY_PASSWORD,password)
+//
+//        database.collection(Constants.KEY_COLLECTION_USERS)
+//            .add(videoUser)
+//            .addOnSuccessListener {
+//              Toast.makeText(this,"Worked",Toast.LENGTH_LONG).show()
+//            }
+//            .addOnFailureListener{
+//            Toast.makeText(this, "Error",Toast.LENGTH_SHORT).show()
+//            }
 
+    }
     private fun uploadImageToFireBBase(){
         if(selectedPhotoUri == null)return
 
@@ -139,6 +158,7 @@ class RegistrationPage : AppCompatActivity() {
             }
     }
 }
+
 
 @Parcelize
 class User(val uid: String , val firstName: String, val lastName: String, val email: String, var profilePictureUri: String):Parcelable {

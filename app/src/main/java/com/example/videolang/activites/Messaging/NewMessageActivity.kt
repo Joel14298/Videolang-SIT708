@@ -1,4 +1,4 @@
- package com.example.videolang
+ package com.example.videolang.activites
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.videolang.R
+import com.example.videolang.activites.Messaging.Chats
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -50,7 +52,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 
                     val userItem = item as UserItem
 
-                    val intent = Intent(view.context,Chats::class.java)
+                    val intent = Intent(view.context, Chats::class.java)
                     intent.putExtra(USER_KEY,userItem.user)
                     startActivity(intent)
                     finish()
@@ -64,7 +66,9 @@ import de.hdodenhof.circleimageview.CircleImageView
 class UserItem(val user: User): Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
     viewHolder.itemView.findViewById<TextView>(R.id.username_data_textview).text = user.firstName + " " +user.lastName
-        Picasso.get().load(user.profilePictureUri).into(viewHolder.itemView.findViewById<CircleImageView>(R.id.imageView_userdata))
+        Picasso.get().load(user.profilePictureUri).into(viewHolder.itemView.findViewById<CircleImageView>(
+            R.id.imageView_userdata
+        ))
     }
     override fun getLayout(): Int {
         return R.layout.user_row_new_message

@@ -1,4 +1,4 @@
-package com.example.videolang
+package com.example.videolang.activites.Userdata
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,12 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.videolang.R
+import com.example.videolang.activites.Views.HomepageActivity
+import com.example.videolang.activites.RegistrationPage
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 
 
 class LoginPage : AppCompatActivity() {
@@ -54,6 +58,7 @@ class LoginPage : AppCompatActivity() {
             }
 
         }
+
 
     }
 

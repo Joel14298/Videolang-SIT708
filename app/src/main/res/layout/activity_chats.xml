@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chats"
+    tools:context=".activites.Messaging.Chats"
     android:background="#F59E2D">
 
     <EditText
@@ -12,22 +12,44 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginEnd="19dp"
-        android:background="@android:color/transparent"
+        android:background="@android:color/white"
         android:ems="10"
-        android:hint="@string/enter_message"
+        android:hint="Type here"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/chat_send_button"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/chat_send_button"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:text="@string/send"
         android:background="@drawable/rounded_corners"
+        android:text="@string/send"
         android:textColor="@color/white"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/recordButton" />
+
+    <Button
+        android:id="@+id/recordButton"
+        android:layout_width="38dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ic_mic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/stopButton"
+        android:visibility="invisible"
+        android:layout_width="38dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ic_mic_off"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

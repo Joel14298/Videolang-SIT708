@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#62C8D8"
     android:visibility="visible"
-    tools:context=".MainActivity">
+    tools:context=".activites.Userdata.MainActivity">
 
     <TextView
         android:id="@+id/textView6"

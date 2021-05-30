@@ -1,4 +1,4 @@
-package com.example.videolang
+package com.example.videolang.activites.Views
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,14 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.example.videolang.R
+import com.example.videolang.activites.Messaging.Chats
+import com.example.videolang.activites.NewMessageActivity
+import com.example.videolang.activites.RegistrationPage
+import com.example.videolang.activites.User
+import com.example.videolang.activites.Userdata.LoginPage
+import com.example.videolang.activites.VideocallActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -18,8 +26,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import de.hdodenhof.circleimageview.CircleImageView
 
-class HomepageActivity : AppCompatActivity() {
-
+class  HomepageActivity : AppCompatActivity() {
     companion object{
         var currentUser: User? = null
         val TAG = "LatestMessages"
@@ -29,15 +36,13 @@ class HomepageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
 
-//        val bottomBar = findViewById<SmoothBottomBar>(R.id.bottomBar)
-
         val incommingMessages = findViewById<RecyclerView>(R.id.recycler_view_incommingmessage)
         incommingMessages.adapter = adapter
         incommingMessages.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
 
         adapter.setOnItemClickListener { item, view ->
             Log.d(TAG,"Successfull")
-            val intent = Intent(this,Chats::class.java)
+            val intent = Intent(this, Chats::class.java)
 
             val row = item as Messages
             intent.putExtra(NewMessageActivity.USER_KEY, row.chatPartnerUser)
@@ -48,13 +53,48 @@ class HomepageActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.floating_action_button)
         fab.setOnClickListener {
-            val intent = Intent(this,NewMessageActivity::class.java)
+            val intent = Intent(this, NewMessageActivity::class.java)
+            startActivity(intent)
+        }
+
+        val callFab = findViewById<FloatingActionButton>(R.id.floating_action_button_call)
+        callFab.setOnClickListener {
+            val intent = Intent(this, VideocallActivity::class.java)
             startActivity(intent)
         }
     fetchCurrentUser()
 
     checkUserLoggedIn()
+
+        val bottomnavaigation = findViewById<BottomNavigationView>(R.id.bottomBar)
+        bottomnavaigation.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.item0 -> {
+                    val intent = Intent(this, Notification::class.java)
+
+                    startActivity(intent)
+                }
+
+                R.id.item1 -> {
+                    val intent = Intent(this, Calendar::class.java)
+
+                    startActivity(intent)
+                }
+                R.id.item2 -> {
+                    val intent = Intent(this, Calls::class.java)
+                    startActivity(intent)
+                }
+                R.id.item3 -> {
+                    val intent = Intent(this, Profile::class.java)
+                    startActivity(intent)
+                }
+            }
+             true
+        }
+
+
     }
+
     class Messages(val chatMessage: Chats.ChatMessage): Item<GroupieViewHolder>(){
         var chatPartnerUser: User? = null
 
@@ -95,9 +135,11 @@ class HomepageActivity : AppCompatActivity() {
         }
     }
 
+
     private fun listenForMessages(){
         val fromId = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/incomingMessages/$fromId")
+
         ref.addChildEventListener(object: ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
             val chatMessage = snapshot.getValue(Chats.ChatMessage::class.java) ?: return
@@ -117,7 +159,8 @@ class HomepageActivity : AppCompatActivity() {
             }
             override fun onCancelled(error: DatabaseError) {
             }
-        })
+        }
+        )
     }
     val adapter = GroupAdapter<GroupieViewHolder>()
 
@@ -136,15 +179,15 @@ class HomepageActivity : AppCompatActivity() {
 private fun checkUserLoggedIn(){
     val uid = FirebaseAuth.getInstance().uid
     if(uid == null){
-        val intent =  Intent(this,RegistrationPage::class.java)
+        val intent =  Intent(this, RegistrationPage::class.java)
         startActivity(intent)
     }
 }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.menu_sign_out->{
+            R.id.menu_sign_out ->{
                 FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this,LoginPage::class.java)
+                val intent = Intent(this, LoginPage::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
@@ -157,5 +200,7 @@ private fun checkUserLoggedIn(){
         menuInflater.inflate(R.menu.nav_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
 }
+
 
