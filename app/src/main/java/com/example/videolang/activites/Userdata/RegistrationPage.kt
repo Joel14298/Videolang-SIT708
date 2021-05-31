@@ -100,21 +100,7 @@ class RegistrationPage : AppCompatActivity() {
 
             }
         }
-//        val database = FirebaseFirestore.getInstance();
-//        val videoUser = HashMap<String, Any>()
-//        videoUser.put(Constants.KEY_FIRST_NAME, firstName)
-//        videoUser.put(Constants.KEY_LAST_NAME, lastName)
-//        videoUser.put(Constants.KEY_EMAIL,email)
-//        videoUser.put(Constants.KEY_PASSWORD,password)
-//
-//        database.collection(Constants.KEY_COLLECTION_USERS)
-//            .add(videoUser)
-//            .addOnSuccessListener {
-//              Toast.makeText(this,"Worked",Toast.LENGTH_LONG).show()
-//            }
-//            .addOnFailureListener{
-//            Toast.makeText(this, "Error",Toast.LENGTH_SHORT).show()
-//            }
+
 
     }
     private fun uploadImageToFireBBase(){

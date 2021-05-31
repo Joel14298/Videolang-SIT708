@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +31,7 @@ import java.util.*
 
 class Chats : AppCompatActivity(){
 
-//    private lateinit var tts: TextToSpeech
+ private lateinit var mTTS: TextToSpeech
 
     var toUser: User? =null
 
@@ -168,9 +169,12 @@ class Chats : AppCompatActivity(){
             override fun onCancelled(error: DatabaseError) {
             }
         })
+
+
+
     }
 
-    private fun listenForVoiceMessages(resultText: String) {
+    fun listenForVoiceMessages(resultText: String) {
         val fromId = FirebaseAuth.getInstance().uid
         val toId = toUser?.uid
         val ref = FirebaseDatabase.getInstance().getReference("/userVoiceMessages/$fromId/$toId")
@@ -187,7 +191,7 @@ class Chats : AppCompatActivity(){
 
                     if(voiceMessage.fromId == FirebaseAuth.getInstance().uid){
                         val currentUser = HomepageActivity.currentUser ?: return
-                        adapter.add(ChatItem3(voiceMessage.text, currentUser))
+                        adapter.add(ChatItem3(voiceMessage.text, currentUser, mTTS.speak(resultText,TextToSpeech.QUEUE_FLUSH, null)))
                     } else{
                         adapter.add(ChatItem4(voiceMessage.text, toUser!!))
                     }
@@ -211,7 +215,21 @@ class Chats : AppCompatActivity(){
 
         })
 
+        mTTS = TextToSpeech(this){status ->
+            if(status == TextToSpeech.SUCCESS){
+                val result = mTTS.setLanguage(Locale.GERMAN)
+                if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
+                    Log.e("Error","Error")
+                }
+
+            }
+            fun speak(){
+
+            }
+
+        }
     }
+
 
     class ChatMessage(val id: String,val text: String, val fromId: String, val toId: String, val timestamp: Long){
         constructor(): this("","","","",-1)
@@ -282,6 +300,8 @@ class Chats : AppCompatActivity(){
     }
 
 
+
+
 }
 
 class ChatItem(val text:String, val user: User): Item<GroupieViewHolder>(){
@@ -312,7 +332,7 @@ class ChatItem2(val text:String, val user: User): Item<GroupieViewHolder>(){
     }
 }
 
-class ChatItem3(val text: String, val user: User): Item<GroupieViewHolder>(){
+class ChatItem3(val text: String, val user: User, speak: Int): Item<GroupieViewHolder>(){
 
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
        viewHolder.itemView.findViewById<TextView>(R.id.translatedText).text =  text
